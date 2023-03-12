@@ -21,18 +21,25 @@ module.exports = {
                 loader: 'babel-loader'
             },
             {
-                test: /\\.css$/,
-                use:[
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            importLoaders: 1,
-                            modules: true
-                        }
+                test: /\.css$/,
+                use: [
+                  "style-loader",
+                  {
+                    loader: "css-loader",
+                    options: {
+                      importLoaders: 1,
+                      modules: true,
                     },
-                    'vue-style-loader',
-                ]
-            },
+                  },
+                  "vue-style-loader",
+                ],
+                include: /\.module\.css$/,
+              },
+              {
+                test: /\.css$/,
+                use: ["style-loader", "css-loader"],
+                exclude: /\.module\.css$/,
+              },
         ],
     },
     plugins: [
