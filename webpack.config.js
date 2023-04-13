@@ -10,6 +10,21 @@ module.exports = {
         filename: "build.js",
         clean: true,
     },
+    resolve: {
+        fallback: {
+            assert: require.resolve("assert/"),
+            "crypto-browserify": require.resolve("crypto-browserify"),
+            "path-browserify": require.resolve("path-browserify"),
+            crypto: require.resolve("crypto-browserify"),
+            path: require.resolve("path-browserify"),
+            stream: require.resolve("stream-browserify"),
+            fs: false,
+            http: require.resolve("stream-http"),
+            https: require.resolve("https-browserify"),
+            os: require.resolve("os-browserify"),
+            url: require.resolve("url"),
+        }
+    },
     module: {
         rules: [
             {
@@ -52,7 +67,6 @@ module.exports = {
     devServer: {
         static: path.join(__dirname,"templates"),
         port: 8080,
-        open: true,
         hot: true,
     },
 }
